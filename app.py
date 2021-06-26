@@ -7,8 +7,9 @@ from log import Log
 import pandas as pd
 import numpy as np
 import pickle
-from keras.preprocessing.sequence import pad_sequences
-from keras.models import Sequential,load_model
+import tensorflow
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.models import Sequential,load_model
 
 model = load_model('cnn_w2v.h5')
 with open('tokenizer.pickle', 'rb') as handle:
