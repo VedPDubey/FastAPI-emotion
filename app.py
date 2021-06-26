@@ -10,16 +10,11 @@ import pickle
 from keras.preprocessing.sequence import pad_sequences
 from keras.models import Sequential,load_model
 
-model = load_model(r'C:\Users\Ved Prakash Dubey\Documents\DB-setup\model\cnn_w2v.h5')
+model = load_model('cnn_w2v.h5')
 with open('tokenizer.pickle', 'rb') as handle:
     tokenizer = pickle.load(handle)
 
-
 app = FastAPI()
-
-@app.get('/')
-def index():
-    return{"message":"yo"}
 
 @app.post('/predict')
 def predict_wellness(data:Log):
@@ -28,7 +23,7 @@ def predict_wellness(data:Log):
     seq = tokenizer.texts_to_sequences(message)
     padded = pad_sequences(seq, maxlen=500)
     
-    class_names = ['joy', 'fear', 'anger', 'sadness', 'neutral']
+    class_names = ['joy', 'anxiety', 'anger', 'sadness', 'neutral']
 
     pred = model.predict(padded)
 
@@ -38,7 +33,7 @@ def predict_wellness(data:Log):
 
     if(emotion=='sadness'):
         score=1+score
-    elif(emotion=='fear'):
+    elif(emotion=='anxiety'):
         score=2+score
     elif(emotion=='anger'):
         score=3+score
