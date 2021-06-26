@@ -1,4 +1,4 @@
-# keras_nightly==2.5.0.dev2021032900
+keras_nightly==2.5.0.dev2021032900
 matplotlib==3.3.2
 uvicorn==0.14.0
 pandas==1.1.3
@@ -6,9 +6,9 @@ pydantic==1.8.2
 nltk==3.5
 numpy==1.19.5
 fastapi==0.65.2
-# keras==2.4.3
+keras==2.4.3
 scikit_learn==0.24.2
-tensorflow
+tensorflow-cpu
 uvloop
 httptools
 gunicorn==19.9.0
